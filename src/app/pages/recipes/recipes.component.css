@@ -14,6 +14,11 @@
   gap: 1rem;
 }
 
+.empty-state {
+  margin-bottom: 1rem;
+  color: var(--text-2);
+}
+
 .recette-card {
   border-top: 5px solid var(--accent-2);
 }

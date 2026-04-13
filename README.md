@@ -1,22 +1,16 @@
-# savon-APP
+# sav-app
 
-Frontend Angular du projet savon.
+Application Angular en un seul repository autour de la gestion simple de recettes de savon.
 
 ## Role du repository
 
-Ce repository gere l'interface de l'application :
+Ce repository contient toute l'application :
 
 - la page d'accueil ;
+- le calculateur local ;
 - l'affichage des recettes ;
 - l'affichage des ingredients ;
-- les appels HTTP vers l'API backend.
-
-Le projet est separe en deux repositories :
-
-1. `savon-APP` : interface Angular
-2. `Savon-API` : API Kotlin / Spring Boot
-
-Cette separation permet d'avoir une architecture proche d'un vrai projet web, tout en restant simple a presenter.
+- l'enregistrement local de recettes dans le navigateur.
 
 ## Technologies
 
@@ -40,17 +34,13 @@ npm start
 
 Application accessible sur `http://localhost:4200`.
 
-## Communication avec le backend
+## Fonctionnement
 
-Le frontend appelle l'API sur `http://localhost:8080`.
+L'application fonctionne sans backend separe.
 
-Routes utilisees actuellement :
-
-- `GET /api-savon/v1/ingredient`
-- `GET /api-savon/v1/recette`
-- `POST /api-savon/v1/recette`
-
-Si l'API n'est pas disponible, le service Angular utilise des donnees de secours pour continuer a afficher l'application.
+- les ingredients de base sont fournis par le service Angular ;
+- les recettes initiales sont prechargees ;
+- les nouvelles recettes sont enregistrees dans le `localStorage` du navigateur.
 
 ## Objectif du projet
 
@@ -58,5 +48,6 @@ Le but est de presenter un projet personnel propre avec :
 
 - routage Angular ;
 - affichage de donnees ;
-- consommation d'API REST ;
-- separation front / back.
+- formulaire et calcul local ;
+- stockage local.
+

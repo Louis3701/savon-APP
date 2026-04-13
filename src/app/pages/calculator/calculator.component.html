@@ -1,0 +1,105 @@
+<section class="title-row mb-3">
+  <h2>Calculateur</h2>
+  <p>Simulation locale d'une recette de savon, sans backend separe.</p>
+</section>
+
+<div class="calculator-grid">
+  <section class="card-clean p-4">
+    <h3>Parametres</h3>
+
+    <div class="mb-3">
+      <label class="form-label">Titre</label>
+      <input class="form-control" [(ngModel)]="form.titre" name="titre" />
+    </div>
+
+    <div class="grid-2 mb-3">
+      <div>
+        <label class="form-label">Categorie</label>
+        <select class="form-select" [(ngModel)]="form.categorie" name="categorie">
+          <option value="Solide">Solide</option>
+          <option value="Liquide">Liquide</option>
+          <option value="Exfoliant">Exfoliant</option>
+        </select>
+      </div>
+      <div>
+        <label class="form-label">Auteur</label>
+        <input class="form-control" [(ngModel)]="form.auteur" name="auteur" />
+      </div>
+    </div>
+
+    <div class="grid-3 mb-3">
+      <div>
+        <label class="form-label">Total huiles (g)</label>
+        <input class="form-control" type="number" [(ngModel)]="form.totalHuiles" name="totalHuiles" />
+      </div>
+      <div>
+        <label class="form-label">Surgras (%)</label>
+        <input class="form-control" type="number" [(ngModel)]="form.surgras" name="surgras" />
+      </div>
+      <div>
+        <label class="form-label">Concentration (%)</label>
+        <input class="form-control" type="number" [(ngModel)]="form.concentration" name="concentration" />
+      </div>
+    </div>
+
+    <h3>Composition</h3>
+    <div class="recipe-lines">
+      @for (ligne of form.lignes; track $index) {
+        <div class="grid-line">
+          <select class="form-select" [(ngModel)]="ligne.ingredientId" [name]="'ingredient-' + $index">
+            @for (ingredient of ingredients; track ingredient.id) {
+              <option [ngValue]="ingredient.id">{{ ingredient.nom }}</option>
+            }
+          </select>
+          <input class="form-control" type="number" [(ngModel)]="ligne.pourcentage" [name]="'pourcentage-' + $index" />
+        </div>
+      }
+    </div>
+
+    <p class="percentage-note" [class.invalid]="totalPourcentage !== 100">
+      Total des pourcentages : {{ totalPourcentage }}%
+    </p>
+
+    <div class="action-row">
+      <button class="btn btn-primary" (click)="simuler()">Simuler</button>
+      <a routerLink="/recettes" class="btn btn-outline-dark">Voir les recettes</a>
+    </div>
+  </section>
+
+  <section class="card-clean p-4 result-card">
+    <h3>Resultat</h3>
+
+    @if (!simulation) {
+      <p class="text-muted mb-0">Renseigne la recette puis clique sur simuler.</p>
+    }
+
+    @if (simulation) {
+      <div class="result-grid">
+        <div>
+          <span>INS moyen</span>
+          <strong>{{ simulation.insMoyen | number: '1.0-1' }}</strong>
+        </div>
+        <div>
+          <span>Soude estimee</span>
+          <strong>{{ simulation.quantiteSoude | number: '1.0-0' }} g</strong>
+        </div>
+        <div>
+          <span>Eau estimee</span>
+          <strong>{{ simulation.quantiteEau | number: '1.0-0' }} g</strong>
+        </div>
+      </div>
+
+      <ul class="preview-list mt-3">
+        @for (ligne of simulation.recette.ingredients; track ligne.ingredient.id) {
+          <li>{{ ligne.ingredient.nom }} - {{ ligne.pourcentage }}%</li>
+        }
+      </ul>
+
+      <button class="btn btn-primary mt-2" (click)="enregistrer()">Enregistrer la recette</button>
+
+      @if (savedMessage) {
+        <p class="save-message mt-3">{{ savedMessage }}</p>
+      }
+    }
+  </section>
+</div>

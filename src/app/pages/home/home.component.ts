@@ -18,9 +18,9 @@ export class HomeComponent {
   ];
 
   readonly points = [
-    'Consulter une petite liste de recettes.',
+    'Consulter une liste de recettes enregistrees localement.',
     'Afficher les ingredients utilises pour la saponification.',
-    'Relier le front Angular a une API locale quand elle est disponible.'
+    'Simuler une recette simple avec un petit calculateur Angular.'
   ];
 
   constructor() {

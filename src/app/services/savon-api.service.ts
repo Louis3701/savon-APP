@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Ingredient } from '../models/ingredient.model';
 import { Recipe } from '../models/recipe.model';
 
@@ -8,38 +7,54 @@ import { Recipe } from '../models/recipe.model';
   providedIn: 'root'
 })
 export class SavonApiService {
-  private readonly apiBaseUrl = 'http://localhost:8080';
+  private readonly storageKey = 'sav-app-recettes';
+  private readonly recettes: Recipe[];
 
-  constructor(private readonly http: HttpClient) {}
+  constructor() {
+    this.recettes = this.loadRecettes();
+  }
 
   getIngredients(): Observable<Ingredient[]> {
-    return this.http
-      .get<Ingredient[]>(`${this.apiBaseUrl}/api-savon/v1/ingredient`)
-      .pipe(catchError(() => of(this.mockIngredients)));
+    return of(this.mockIngredients);
   }
 
   getRecettes(): Observable<Recipe[]> {
-    return this.http
-      .get<Recipe[]>(`${this.apiBaseUrl}/api-savon/v1/recette`)
-      .pipe(catchError(() => of(this.mockRecettes)));
+    return of(this.recettes.map((recipe) => ({ ...recipe, ingredients: [...recipe.ingredients] })));
   }
 
   createRecette(recipe: Omit<Recipe, 'id'>): Observable<Recipe> {
-    const payload = {
-      titre: recipe.titre,
-      categorie: recipe.categorie,
-      surgras: recipe.surgras,
-      concentration: recipe.concentration,
-      auteur: recipe.auteur,
-      ingredients: recipe.ingredients.map((line) => ({
-        ingredientId: line.ingredient.id,
-        pourcentage: line.pourcentage
-      }))
+    const createdRecipe: Recipe = {
+      ...recipe,
+      id: this.getNextRecipeId()
     };
 
-    return this.http
-      .post<Recipe>(`${this.apiBaseUrl}/api-savon/v1/recette`, payload)
-      .pipe(catchError(() => of({ ...recipe, id: this.mockRecettes.length + 1 })));
+    this.recettes.unshift(createdRecipe);
+    this.saveRecettes();
+
+    return of(createdRecipe);
+  }
+
+  private loadRecettes(): Recipe[] {
+    const storedValue = globalThis.localStorage?.getItem(this.storageKey);
+
+    if (!storedValue) {
+      return [...this.mockRecettes];
+    }
+
+    try {
+      return JSON.parse(storedValue) as Recipe[];
+    } catch {
+      return [...this.mockRecettes];
+    }
+  }
+
+  private saveRecettes(): void {
+    globalThis.localStorage?.setItem(this.storageKey, JSON.stringify(this.recettes));
+  }
+
+  private getNextRecipeId(): number {
+    const maxId = this.recettes.reduce((highest, recipe) => Math.max(highest, recipe.id), 0);
+    return maxId + 1;
   }
 
   private readonly mockIngredients: Ingredient[] = [

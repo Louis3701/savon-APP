@@ -1,7 +1,13 @@
 <section class="title-row mb-3">
   <h2>Recettes</h2>
-  <p>Quelques exemples de formules avec leur composition principale.</p>
+  <p>Recettes disponibles dans l'application, y compris celles enregistrees depuis le calculateur.</p>
 </section>
+
+@if (recettes.length === 0) {
+  <div class="card-clean p-4 empty-state">
+    Aucune recette pour le moment. Utilise le calculateur pour en ajouter une.
+  </div>
+}
 
 <div class="grid-recettes">
   @for (recette of recettes; track recette.id) {

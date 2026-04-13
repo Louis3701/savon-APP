@@ -1,0 +1,101 @@
+.title-row h2 {
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  margin: 0;
+}
+
+.title-row p {
+  color: var(--text-2);
+  margin: 0.25rem 0 0;
+}
+
+.calculator-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 1rem;
+}
+
+.grid-2,
+.grid-3 {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.recipe-lines {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.grid-line {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0.75rem;
+}
+
+.percentage-note {
+  margin: 1rem 0 0;
+  color: var(--text-2);
+}
+
+.percentage-note.invalid {
+  color: #a53b2a;
+}
+
+.action-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.result-card {
+  align-self: start;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  background: var(--surface-muted);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.result-grid span {
+  display: block;
+  color: var(--text-2);
+  font-size: 0.88rem;
+}
+
+.result-grid strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 1.2rem;
+}
+
+.preview-list {
+  margin-bottom: 0;
+  padding-left: 1.1rem;
+}
+
+.save-message {
+  margin-bottom: 0;
+  color: var(--accent-1);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .calculator-grid,
+  .grid-2,
+  .grid-3,
+  .grid-line {
+    grid-template-columns: 1fr;
+  }
+}
