@@ -1,0 +1,22 @@
+.app-header {
+  background-color: var(--color-bg-alt, #f8f9fa);
+  border-bottom: 1px solid #dee2e6;
+}
+
+.top-bar {
+  padding: 0.5rem 0;
+}
+
+.brand-badge {
+  display: inline-block;
+  background: var(--color-primary, #2e7d32);
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.user-name {
+  font-size: 0.9rem;
+}

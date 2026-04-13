@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-sm p-0 mb-4">
+  <div class="container-xl nav-bar-content p-0">
+
+    <!-- Bouton Toggle (menu hamburger) -->
+    <button class="navbar-toggler ms-3 mt-2 mb-2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Conteneur des liens du menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav nav-underline">
+
+        <!-- Accueil -->
+        <li class="nav-item border-0">
+          <a class="nav-link"
+             routerLink="/"
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             title="Retour à la page d'accueil">
+            <i class="bi bi-house-fill"></i> Accueil
+          </a>
+        </li>
+
+        <!-- Calculateur -->
+        <li class="nav-item">
+          <a class="nav-link"
+             routerLink="/calculateur"
+             routerLinkActive="active"
+             title="Calculer une recette de savon">
+            <i class="bi bi-calculator-fill"></i> Calculateur
+          </a>
+        </li>
+
+        <!-- Recettes (utilisateurs connectés) -->
+        @if (authService.isAuthenticated()) {
+          <li class="nav-item">
+            <a class="nav-link"
+               routerLink="/recettes"
+               routerLinkActive="active"
+               title="Gérer mes recettes">
+              <i class="bi bi-journal-text"></i> Mes recettes
+            </a>
+          </li>
+        }
+
+        <!-- Ingrédients (admin) -->
+        @if (authService.getUserFullInfo()?.roles == 'ROLE_ADMIN') {
+          <li class="nav-item">
+            <a class="nav-link"
+               routerLink="/ingredients"
+               routerLinkActive="active"
+               title="Gérer les ingrédients">
+              <i class="bi bi-collection-fill"></i> Ingrédients
+            </a>
+          </li>
+        }
+
+      </ul>
+    </div>
+  </div>
+</nav>
