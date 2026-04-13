@@ -1,0 +1,20 @@
+<section class="hero card-clean p-4 p-md-5">
+  <p class="eyebrow">Savonnerie Artisanale</p>
+  <h1>Formule tes propres savons, avec style.</h1>
+  <p class="subtitle">
+    Ton espace personnel pour imaginer, tester et suivre des recettes de savon moderne.
+  </p>
+  <div class="cta-row">
+    <a routerLink="/recettes" class="btn btn-primary btn-lg">Voir les recettes</a>
+    <a routerLink="/ingredients" class="btn btn-outline-dark btn-lg">Explorer les ingredients</a>
+  </div>
+</section>
+
+<section class="stats-grid mt-4">
+  @for (item of metrics; track item.label) {
+    <article class="card-clean stat-card p-4">
+      <p class="stat-label">{{ item.label }}</p>
+      <p class="stat-value">{{ item.value }}</p>
+    </article>
+  }
+</section>

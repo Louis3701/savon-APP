@@ -1,0 +1,47 @@
+.title-row h2 {
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  margin: 0;
+}
+
+.title-row p {
+  color: var(--text-2);
+  margin: 0.25rem 0 0;
+}
+
+.grid-recettes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.recette-card {
+  border-left: 6px solid var(--accent-orange-500);
+}
+
+.recette-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.meta {
+  margin: 0;
+  color: var(--text-2);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.chip {
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.87rem;
+}
+
+.ingredients {
+  margin: 0;
+  padding-left: 1.2rem;
+}

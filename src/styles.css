@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700&family=Outfit:wght@400;500;600;700&display=swap');
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+:root {
+	--bg-1: #fffaf1;
+	--bg-2: #f0f4ec;
+	--surface: #ffffff;
+	--text-1: #1f2937;
+	--text-2: #4b5563;
+	--accent-orange-500: #d97706;
+	--accent-teal-600: #0f766e;
+	--accent-teal-700: #115e59;
+	--font-display: 'Bricolage Grotesque', sans-serif;
+	--font-body: 'Outfit', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	min-height: 100%;
+}
+
+body {
+	font-family: var(--font-body);
+	color: var(--text-1);
+	background:
+		radial-gradient(circle at 12% 12%, rgba(217, 119, 6, 0.14), transparent 35%),
+		radial-gradient(circle at 88% 18%, rgba(15, 118, 110, 0.16), transparent 28%),
+		linear-gradient(180deg, var(--bg-1), var(--bg-2));
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-display);
+	letter-spacing: -0.02em;
+}
+
+.card-clean {
+	background: var(--surface);
+	border-radius: 20px;
+	box-shadow:
+		0 16px 30px rgba(31, 41, 55, 0.08),
+		0 2px 5px rgba(31, 41, 55, 0.05);
+}
+
+.btn-primary {
+	--bs-btn-bg: var(--accent-orange-500);
+	--bs-btn-border-color: var(--accent-orange-500);
+	--bs-btn-hover-bg: #b76005;
+	--bs-btn-hover-border-color: #b76005;
+}

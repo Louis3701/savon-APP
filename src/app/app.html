@@ -1,0 +1,21 @@
+<header class="topbar">
+  <div class="container nav-wrap">
+    <a routerLink="/" class="brand">
+      <span class="brand-dot"></span>
+      Savon Nova
+    </a>
+    <nav class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+      <a routerLink="/recettes" routerLinkActive="active">Recettes</a>
+      <a routerLink="/ingredients" routerLinkActive="active">Ingredients</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container content-area py-4 py-md-5">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer py-3">
+  <div class="container">Projet perso inspire d'une app savon artisanale.</div>
+</footer>

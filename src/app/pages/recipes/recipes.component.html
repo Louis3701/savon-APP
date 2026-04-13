@@ -1,0 +1,25 @@
+<section class="title-row mb-3">
+  <h2>Recettes</h2>
+  <p>Catalogue de formules avec surgras et concentration.</p>
+</section>
+
+<div class="grid-recettes">
+  @for (recette of recettes; track recette.id) {
+    <article class="card-clean recette-card p-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h3>{{ recette.titre }}</h3>
+        <span class="badge text-bg-warning">{{ recette.categorie }}</span>
+      </div>
+      <p class="meta">Par {{ recette.auteur }}</p>
+      <div class="chips mt-3">
+        <span class="chip">Surgras: {{ recette.surgras | number: '1.0-1' }}%</span>
+        <span class="chip">Concentration: {{ recette.concentration | number: '1.0-1' }}%</span>
+      </div>
+      <ul class="ingredients mt-3">
+        @for (ligne of recette.ingredients; track ligne.ingredient.id) {
+          <li>{{ ligne.ingredient.nom }} <strong>{{ ligne.pourcentage }}%</strong></li>
+        }
+      </ul>
+    </article>
+  }
+</div>
