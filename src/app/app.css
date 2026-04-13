@@ -6,9 +6,9 @@
 	position: sticky;
 	top: 0;
 	z-index: 20;
-	backdrop-filter: blur(8px);
-	background: rgba(255, 252, 245, 0.9);
-	border-bottom: 1px solid rgba(157, 114, 54, 0.18);
+	backdrop-filter: blur(6px);
+	background: rgba(246, 241, 232, 0.95);
+	border-bottom: 1px solid var(--border-soft);
 }
 
 .nav-wrap {
@@ -20,7 +20,8 @@
 
 .brand {
 	font-family: var(--font-display);
-	font-size: 1.55rem;
+	font-size: 1.4rem;
+	font-weight: 700;
 	text-decoration: none;
 	color: var(--text-1);
 	display: flex;
@@ -28,11 +29,17 @@
 	gap: 0.55rem;
 }
 
-.brand-dot {
-	width: 14px;
-	height: 14px;
-	border-radius: 999px;
-	background: linear-gradient(120deg, var(--accent-orange-500), var(--accent-teal-600));
+.brand-badge {
+	width: 28px;
+	height: 28px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	background: var(--accent-2);
+	color: #fff;
+	font-family: var(--font-body);
+	font-size: 0.95rem;
 }
 
 .nav-links {
@@ -44,14 +51,17 @@
 .nav-links a {
 	text-decoration: none;
 	color: var(--text-1);
-	border-radius: 999px;
-	padding: 0.42rem 0.84rem;
-	transition: background-color 0.2s ease;
+	border-radius: 10px;
+	padding: 0.45rem 0.8rem;
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
 }
 
 .nav-links a.active,
 .nav-links a:hover {
-	background: #fff1dc;
+	background: var(--surface);
+	color: #000;
 }
 
 .content-area {
@@ -59,9 +69,9 @@
 }
 
 .footer {
-	border-top: 1px solid rgba(157, 114, 54, 0.18);
+	border-top: 1px solid var(--border-soft);
 	color: var(--text-2);
-	background: rgba(255, 252, 245, 0.95);
+	background: rgba(246, 241, 232, 0.95);
 }
 
 @media (max-width: 680px) {

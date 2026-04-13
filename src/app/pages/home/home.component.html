@@ -1,12 +1,13 @@
 <section class="hero card-clean p-4 p-md-5">
-  <p class="eyebrow">Savonnerie Artisanale</p>
-  <h1>Formule tes propres savons, avec style.</h1>
+  <p class="eyebrow">Projet personnel Angular</p>
+  <h1>Une application simple pour consulter des recettes de savon.</h1>
   <p class="subtitle">
-    Ton espace personnel pour imaginer, tester et suivre des recettes de savon moderne.
+    J'ai repris le theme de la savonnerie pour faire une interface claire, avec une page d'accueil,
+    une page recettes et une page ingredients connectees a une API locale.
   </p>
   <div class="cta-row">
     <a routerLink="/recettes" class="btn btn-primary btn-lg">Voir les recettes</a>
-    <a routerLink="/ingredients" class="btn btn-outline-dark btn-lg">Explorer les ingredients</a>
+    <a routerLink="/ingredients" class="btn btn-outline-dark btn-lg">Voir les ingredients</a>
   </div>
 </section>
 
@@ -17,4 +18,23 @@
       <p class="stat-value">{{ item.value }}</p>
     </article>
   }
+</section>
+
+<section class="project-grid mt-4">
+  <article class="card-clean p-4">
+    <h2>Ce que fait l'application</h2>
+    <ul>
+      @for (point of points; track point) {
+        <li>{{ point }}</li>
+      }
+    </ul>
+  </article>
+
+  <article class="card-clean p-4">
+    <h2>Idee generale</h2>
+    <p>
+      Le but n'est pas de faire une plateforme complete, mais une base propre pour presenter un petit
+      projet front avec routage, appel HTTP et affichage de donnees.
+    </p>
+  </article>
 </section>

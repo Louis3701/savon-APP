@@ -14,14 +14,32 @@ export class SavonApiService {
 
   getIngredients(): Observable<Ingredient[]> {
     return this.http
-      .get<Ingredient[]>(`${this.apiBaseUrl}/ingredients`)
+      .get<Ingredient[]>(`${this.apiBaseUrl}/api-savon/v1/ingredient`)
       .pipe(catchError(() => of(this.mockIngredients)));
   }
 
   getRecettes(): Observable<Recipe[]> {
     return this.http
-      .get<Recipe[]>(`${this.apiBaseUrl}/recettes`)
+      .get<Recipe[]>(`${this.apiBaseUrl}/api-savon/v1/recette`)
       .pipe(catchError(() => of(this.mockRecettes)));
+  }
+
+  createRecette(recipe: Omit<Recipe, 'id'>): Observable<Recipe> {
+    const payload = {
+      titre: recipe.titre,
+      categorie: recipe.categorie,
+      surgras: recipe.surgras,
+      concentration: recipe.concentration,
+      auteur: recipe.auteur,
+      ingredients: recipe.ingredients.map((line) => ({
+        ingredientId: line.ingredient.id,
+        pourcentage: line.pourcentage
+      }))
+    };
+
+    return this.http
+      .post<Recipe>(`${this.apiBaseUrl}/api-savon/v1/recette`, payload)
+      .pipe(catchError(() => of({ ...recipe, id: this.mockRecettes.length + 1 })));
   }
 
   private readonly mockIngredients: Ingredient[] = [

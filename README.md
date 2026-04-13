@@ -1,59 +1,62 @@
-# SavonFront
+# savon-APP
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+Frontend Angular du projet savon.
 
-## Development server
+## Role du repository
 
-To start a local development server, run:
+Ce repository gere l'interface de l'application :
 
-```bash
-ng serve
-```
+- la page d'accueil ;
+- l'affichage des recettes ;
+- l'affichage des ingredients ;
+- les appels HTTP vers l'API backend.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Le projet est separe en deux repositories :
 
-## Code scaffolding
+1. `savon-APP` : interface Angular
+2. `Savon-API` : API Kotlin / Spring Boot
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Cette separation permet d'avoir une architecture proche d'un vrai projet web, tout en restant simple a presenter.
 
-```bash
-ng generate component component-name
-```
+## Technologies
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Angular 21
+- TypeScript
+- Bootstrap
 
-```bash
-ng generate --help
-```
+## Lancement
 
-## Building
+Prerequis :
 
-To build the project run:
+- Node.js
+- npm
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Commande :
 
 ```bash
-ng test
+npm install
+npm start
 ```
 
-## Running end-to-end tests
+Application accessible sur `http://localhost:4200`.
 
-For end-to-end (e2e) testing, run:
+## Communication avec le backend
 
-```bash
-ng e2e
-```
+Le frontend appelle l'API sur `http://localhost:8080`.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Routes utilisees actuellement :
 
-## Additional Resources
+- `GET /api-savon/v1/ingredient`
+- `GET /api-savon/v1/recette`
+- `POST /api-savon/v1/recette`
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Si l'API n'est pas disponible, le service Angular utilise des donnees de secours pour continuer a afficher l'application.
+
+## Objectif du projet
+
+Le but est de presenter un projet personnel propre avec :
+
+- routage Angular ;
+- affichage de donnees ;
+- consommation d'API REST ;
+- separation front / back.

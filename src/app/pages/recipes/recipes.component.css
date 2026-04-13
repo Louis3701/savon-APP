@@ -15,7 +15,7 @@
 }
 
 .recette-card {
-  border-left: 6px solid var(--accent-orange-500);
+  border-top: 5px solid var(--accent-2);
 }
 
 .recette-card h3 {
@@ -28,20 +28,38 @@
   color: var(--text-2);
 }
 
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
+.recette-badge {
+  background: #efe2c9;
+  color: #5b4620;
+  border: 1px solid #dbc6a1;
 }
 
-.chip {
-  background: #f3f4f6;
-  border-radius: 999px;
-  padding: 0.25rem 0.65rem;
-  font-size: 0.87rem;
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding: 0.9rem;
+  border-radius: 12px;
+  background: var(--surface-muted);
+}
+
+.info-grid strong {
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.info-label {
+  color: var(--text-2);
+  font-size: 0.88rem;
 }
 
 .ingredients {
   margin: 0;
   padding-left: 1.2rem;
+}
+
+@media (max-width: 720px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
 }

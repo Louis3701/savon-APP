@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700&family=Outfit:wght@400;500;600;700&display=swap');
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
 :root {
-	--bg-1: #fffaf1;
-	--bg-2: #f0f4ec;
+	--bg-1: #f6f1e8;
+	--bg-2: #ece5d7;
 	--surface: #ffffff;
-	--text-1: #1f2937;
-	--text-2: #4b5563;
-	--accent-orange-500: #d97706;
-	--accent-teal-600: #0f766e;
-	--accent-teal-700: #115e59;
-	--font-display: 'Bricolage Grotesque', sans-serif;
-	--font-body: 'Outfit', sans-serif;
+	--surface-muted: #f9f6ef;
+	--border-soft: #d9cebb;
+	--text-1: #2f2a24;
+	--text-2: #655d53;
+	--accent-1: #7d9b76;
+	--accent-2: #b88746;
+	--font-display: 'Georgia', 'Times New Roman', serif;
+	--font-body: 'Segoe UI', sans-serif;
 }
 
 * {
@@ -29,8 +29,8 @@ body {
 	font-family: var(--font-body);
 	color: var(--text-1);
 	background:
-		radial-gradient(circle at 12% 12%, rgba(217, 119, 6, 0.14), transparent 35%),
-		radial-gradient(circle at 88% 18%, rgba(15, 118, 110, 0.16), transparent 28%),
+		radial-gradient(circle at top left, rgba(184, 135, 70, 0.14), transparent 30%),
+		radial-gradient(circle at right 20%, rgba(125, 155, 118, 0.18), transparent 24%),
 		linear-gradient(180deg, var(--bg-1), var(--bg-2));
 }
 
@@ -44,15 +44,23 @@ h4 {
 
 .card-clean {
 	background: var(--surface);
-	border-radius: 20px;
-	box-shadow:
-		0 16px 30px rgba(31, 41, 55, 0.08),
-		0 2px 5px rgba(31, 41, 55, 0.05);
+	border-radius: 14px;
+	border: 1px solid var(--border-soft);
+	box-shadow: 0 10px 24px rgba(63, 48, 27, 0.06);
 }
 
 .btn-primary {
-	--bs-btn-bg: var(--accent-orange-500);
-	--bs-btn-border-color: var(--accent-orange-500);
-	--bs-btn-hover-bg: #b76005;
-	--bs-btn-hover-border-color: #b76005;
+	--bs-btn-bg: var(--accent-1);
+	--bs-btn-border-color: var(--accent-1);
+	--bs-btn-hover-bg: #6c8965;
+	--bs-btn-hover-border-color: #6c8965;
+	--bs-btn-color: #ffffff;
+}
+
+.btn-outline-dark {
+	--bs-btn-color: var(--text-1);
+	--bs-btn-border-color: var(--border-soft);
+	--bs-btn-hover-bg: #efe7d7;
+	--bs-btn-hover-border-color: var(--border-soft);
+	--bs-btn-hover-color: var(--text-1);
 }
